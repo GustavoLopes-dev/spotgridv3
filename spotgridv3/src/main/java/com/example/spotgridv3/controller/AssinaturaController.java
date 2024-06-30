@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import com.example.spotgridv3.formatacoes.CriarAssinaturaRequest;
 import com.example.spotgridv3.model.Aplicativo;
 import com.example.spotgridv3.service.AplicativoService;
 import com.example.spotgridv3.service.ClienteService;
@@ -21,7 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.spotgridv3.model.Assinatura;
 import com.example.spotgridv3.model.Cliente;
-import com.example.spotgridv3.requestsformat.CriarAssinaturaRequest;
 import com.example.spotgridv3.service.AssinaturaService;
 
 @RestController
@@ -69,7 +69,7 @@ public class AssinaturaController {
     }
 
     //okay
-    @GetMapping("/tipo/{tipo}")
+    @GetMapping("/{tipo}")
     public List<Assinatura> buscarAssinaturasPorTipo(@PathVariable String tipo) {
         LocalDate dataAtual = LocalDate.now();
 
@@ -94,10 +94,11 @@ public class AssinaturaController {
                 return inativas;
             default:
                 throw new IllegalArgumentException("Tipo de assinatura inválido: " + tipo);
-        }
+        }   
     }
 
 
+    //ok
     @GetMapping("/asscli/{codigocli}")
     public List<Assinatura> assinaturasByCliente(@PathVariable long codigocli) {
         List<Assinatura> assinaturas = assinaturaService.buscarAssinaturasPorCodigoCliente(codigocli);
@@ -125,15 +126,21 @@ public class AssinaturaController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/cliente/{codigoCliente}")
-    public ResponseEntity<List<Assinatura>> buscarAssinaturasPorCodigoCliente(@PathVariable Long codigoCliente) {
-        List<Assinatura> assinaturas = assinaturaService.buscarAssinaturasPorCodigoCliente(codigoCliente);
-        return ResponseEntity.ok(assinaturas);
-    }
 
-    @GetMapping("/aplicativo/{codigoAplicativo}")
+    //okay
+    @GetMapping("/assap/{codigoAplicativo}")
     public ResponseEntity<List<Assinatura>> buscarAssinaturasPorCodigoAplicativo(@PathVariable Long codigoAplicativo) {
         List<Assinatura> assinaturas = assinaturaService.buscarAssinaturasPorCodigoAplicativo(codigoAplicativo);
         return ResponseEntity.ok(assinaturas);
+    }
+
+    @GetMapping("/assinvalida/{codass}")
+    public Boolean isValidaFunc(@PathVariable long codass) {
+        Assinatura assinatura = assinaturaService.buscarAssinaturaPorCodigo(codass).get(0);
+        if(assinatura.getStatus().equalsIgnoreCase("ativo")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

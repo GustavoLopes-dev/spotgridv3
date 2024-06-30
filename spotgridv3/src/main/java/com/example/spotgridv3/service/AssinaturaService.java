@@ -56,7 +56,7 @@ public class AssinaturaService {
     public List<Assinatura> buscarAssinaturasPorCodigoAplicativo(Long codigoAplicativo) {
         return assinaturaRepository.findByAplicativoCodigo(codigoAplicativo);
     }
-
+    
     public List<Assinatura> buscarAssinaturasPorStatus(String status) {
         return assinaturaRepository.findByStatusAtual(status);
     }

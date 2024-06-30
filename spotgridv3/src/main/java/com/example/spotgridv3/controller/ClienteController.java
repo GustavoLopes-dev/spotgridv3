@@ -26,7 +26,8 @@ public class ClienteController {
     public ClienteController(ClienteService clienteService) {
         this.clienteService = clienteService;
     }
-
+    
+    //okay
     @GetMapping("")
     public List<Cliente> listarClientes() {
         List<Cliente> clientes = clienteService.listarTodosClientes();

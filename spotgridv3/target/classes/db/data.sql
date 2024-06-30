@@ -19,8 +19,8 @@ INSERT INTO Cliente (nome, email) VALUES ('Filipi Machado', 'filipi.machado@emai
 
 INSERT INTO Assinatura (codigo_aplicativo, codigo_cliente, status_atual, inicio_vigencia, fim_vigencia) VALUES (1, 1, 'ativo', '2024-06-30', '2024-07-30');
 INSERT INTO Assinatura (codigo_aplicativo, codigo_cliente, status_atual, inicio_vigencia, fim_vigencia) VALUES (2, 2, 'ativo', '2024-07-01', '2024-08-01');
-INSERT INTO Assinatura (codigo_aplicativo, codigo_cliente, status_atual, inicio_vigencia, fim_vigencia) VALUES (3, 3, 'inativo', '2024-05-05', '2024-06-05');
-INSERT INTO Assinatura (codigo_aplicativo, codigo_cliente, status_atual, inicio_vigencia, fim_vigencia) VALUES (4, 4, 'inativo', '2024-03-03', '2024-04-03');
+INSERT INTO Assinatura (codigo_aplicativo, codigo_cliente, status_atual, inicio_vigencia, fim_vigencia) VALUES (3, 3, 'cancelado', '2024-05-05', '2024-06-05');
+INSERT INTO Assinatura (codigo_aplicativo, codigo_cliente, status_atual, inicio_vigencia, fim_vigencia) VALUES (4, 4, 'cancelado', '2024-03-03', '2024-04-03');
 INSERT INTO Assinatura (codigo_aplicativo, codigo_cliente, status_atual, inicio_vigencia, fim_vigencia) VALUES (5, 5, 'ativo', '2024-07-04', '2024-08-04');
 INSERT INTO Assinatura (codigo_aplicativo, codigo_cliente, status_atual, inicio_vigencia, fim_vigencia) VALUES (1, 6, 'ativo', '2024-07-05', '2024-08-05');
 INSERT INTO Assinatura (codigo_aplicativo, codigo_cliente, status_atual, inicio_vigencia, fim_vigencia) VALUES (2, 7, 'ativo', '2024-07-06', '2024-08-06');

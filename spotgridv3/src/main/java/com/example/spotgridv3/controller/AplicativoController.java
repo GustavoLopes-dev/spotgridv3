@@ -27,6 +27,7 @@ public class AplicativoController {
         this.aplicativoService = aplicativoService;
     }
 
+    //okay
     @GetMapping("")
     public List<Aplicativo> listarAplicativos() {
         return aplicativoService.listarTodosAplicativos();
