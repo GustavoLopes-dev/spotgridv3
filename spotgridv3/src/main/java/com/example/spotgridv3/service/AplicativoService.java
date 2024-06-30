@@ -25,10 +25,6 @@ public class AplicativoService {
         return aplicativoRepository.findById(id);
     }
 
-    public Aplicativo criarAplicativo(Aplicativo aplicativo) {
-        return aplicativoRepository.save(aplicativo);
-    }
-
     public Aplicativo atualizarAplicativo(Long id, double custo) {
         Optional<Aplicativo> atualizarAplicativo = aplicativoRepository.findById(id);
         if (atualizarAplicativo.isPresent()) {
@@ -38,13 +34,5 @@ public class AplicativoService {
         } else {
             return null;
         }
-    }
-
-    public boolean deletarAplicativo(Long id) {
-        if (aplicativoRepository.existsById(id)) {
-            aplicativoRepository.deleteById(id);
-            return true;
-        }
-        return false;
     }
 }

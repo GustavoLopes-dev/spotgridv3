@@ -25,10 +25,6 @@ public class UsuarioService {
         return usuarioRepository.findById(id);
     }
 
-    public Usuario criarUsuario(Usuario usuario) {
-        return usuarioRepository.save(usuario);
-    }
-
     public Usuario atualizarUsuario(Long id, Usuario usuarioAtualizado) {
         Optional<Usuario> optionalUsuario = usuarioRepository.findById(id);
         if (optionalUsuario.isPresent()) {
@@ -40,17 +36,5 @@ public class UsuarioService {
         } else {
             return null;
         }
-    }
-
-    public boolean deletarUsuario(Long id) {
-        if (usuarioRepository.existsById(id)) {
-            usuarioRepository.deleteById(id);
-            return true;
-        }
-        return false;
-    }
-
-    public Optional<Usuario> buscarPorUsuario(String usuario) {
-        return usuarioRepository.findByUsuario(usuario);
     }
 }

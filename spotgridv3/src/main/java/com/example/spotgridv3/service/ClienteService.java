@@ -40,13 +40,4 @@ public class ClienteService {
             return null;
         }
     }
-
-    public boolean deletarCliente(Long id) {
-        Optional<Cliente> optionalCliente = clienteRepository.findById(id);
-        if (optionalCliente.isPresent()) {
-            clienteRepository.deleteById(id);
-            return true;
-        }
-        return false;
-    }
 }

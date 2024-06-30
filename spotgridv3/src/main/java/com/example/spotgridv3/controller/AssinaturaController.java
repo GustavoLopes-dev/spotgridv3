@@ -11,11 +11,9 @@ import com.example.spotgridv3.model.Aplicativo;
 import com.example.spotgridv3.service.AplicativoService;
 import com.example.spotgridv3.service.ClienteService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -109,24 +107,6 @@ public class AssinaturaController {
         }
     }
 
-    @PutMapping("/{codigo}")
-    public ResponseEntity<Assinatura> atualizarAssinatura(@PathVariable Long codigo, @RequestBody Assinatura assinaturaAtualizada) {
-        Optional<Assinatura> assinaturaExistente = assinaturaService.buscarPorCodigo(codigo);
-        if (assinaturaExistente.isPresent()) {
-            Assinatura assinaturaAtualizadaSalva = assinaturaService.atualizarAssinatura(codigo, assinaturaAtualizada);
-            return ResponseEntity.ok(assinaturaAtualizadaSalva);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    @DeleteMapping("/{codigo}")
-    public ResponseEntity<Void> deletarAssinatura(@PathVariable Long codigo) {
-        assinaturaService.deletarAssinatura(codigo);
-        return ResponseEntity.noContent().build();
-    }
-
-
     //okay
     @GetMapping("/assap/{codigoAplicativo}")
     public ResponseEntity<List<Assinatura>> buscarAssinaturasPorCodigoAplicativo(@PathVariable Long codigoAplicativo) {
@@ -134,6 +114,7 @@ public class AssinaturaController {
         return ResponseEntity.ok(assinaturas);
     }
 
+    //okay
     @GetMapping("/assinvalida/{codass}")
     public Boolean isValidaFunc(@PathVariable long codass) {
         Assinatura assinatura = assinaturaService.buscarAssinaturaPorCodigo(codass).get(0);

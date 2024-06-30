@@ -44,11 +44,6 @@ public class AssinaturaService {
             throw new RuntimeException("Assinatura não encontrada para atualização. Código: " + codigo);
         }
     }
-
-    public void deletarAssinatura(Long codigo) {
-        assinaturaRepository.deleteById(codigo);
-    }
-
     public List<Assinatura> buscarAssinaturasPorCodigoCliente(Long codigoCliente) {
         return assinaturaRepository.findByClienteCodigo(codigoCliente);
     }
